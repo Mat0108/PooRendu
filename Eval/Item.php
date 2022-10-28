@@ -38,7 +38,7 @@ class Item{
         return $this->Weight;
     }
     public function toString(){
-        return $this->getName().": ".((float)$this->getPrice()/100). " € poids : ".$this->getWeight();
+        return $this->getName().": ".((float)$this->getPrice()/100). " € poids : ".$this->getWeight() ." g";
     }
     
 

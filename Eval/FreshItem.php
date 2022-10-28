@@ -12,7 +12,7 @@ class FreshItem extends Item{
         $this->bestBeforeDate = date('Y-m-y ',strtotime($date));
     }
     public function toString(){
-        return "data limite : ".$this->bestBeforeDate." ".parent::getName().": ".((float)parent::getPrice()/100). " € poids : ".parent::getWeight();
+        return "data limite : ".$this->bestBeforeDate." ".parent::getName().": ".((float)parent::getPrice()/100). " € poids : ".parent::getWeight() ." g";
     }
 
 }
