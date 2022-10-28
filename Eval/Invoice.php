@@ -66,14 +66,15 @@ class Invoice{
         return $this->pdo;
     }
     public function toBdd(){
-        $produit = array();
+        $produit ="";
         $qty = 0;
         $total = 0.0;
         $tax = 0.0;
         foreach ($this->listeAPayer as &$value) {
-            $produit[]='"'.$value->label().'","'.$value->cost().'","'.$value->getTax().'"';
+            $produit=$produit.'{"'.$value->label().'","'.$value->cost().'","'.$value->getTax().'"},';
             $qty++;
         }
+        $produit = substr($produit, 0, -1);
         $total = $this->totalAmount();
         $tax=$this->totalTax();
         var_dump($produit);
@@ -81,7 +82,7 @@ class Invoice{
         var_dump($total);
         var_dump($tax);
         $this->getPdo();    
-        $sql = "INSERT INTO ".$this->table."VALUES (".implode($produit) .",".$qty.",".$total.",".$tax.")";
+        $sql = "INSERT INTO ".$this->table."VALUES ('".$produit ."','".$qty."','".$total."','".$tax."')";
         $this->getPdo()->query($sql);
         
     }
@@ -90,4 +91,4 @@ $Invoice = new Invoice();
 $Invoice->add(new Payable(new Ticket("RGBY17032012 - Walles-France", 9000)));
 $Invoice->add(new Payable(new FreshItem("viande", 3000,2500,"2022/10/12")));
 print($Invoice->toString());
-$Invoice->toBdd();
+//$Invoice->toBdd();
