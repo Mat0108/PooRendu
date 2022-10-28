@@ -27,6 +27,17 @@ class Payable {
         }
     }
     public function label(){
+        switch(get_class($this->Item)){
+            case "Ticket":
+                return $this->Item->getReference();
+                break;
+            case "Item":
+                return $this->Item->getName();
+                break;
+            case "FreshItem":
+                return $this->Item->getName();
+                break;
+        }
         return $this->Item->getName();
     }
     public function cost(){
@@ -34,12 +45,14 @@ class Payable {
     }
     public function taxRatePerTenThousand(){
         return $this->Item->getPrice()*((100+(float)$this->Tax)/100);
-
+    }
+    public function toString(){
+        return "label : ".$this->label()."  prix ht : ".$this->cost()." prix tcc : ".$this->taxRatePerTenThousand();
     }
 }
 
-$payable = new Payable(new Ticket("RGBY17032012 - Walles-France", 9000));
-$payable2 = new Payable(new FreshItem("viande", 300,2500,"2022/10/12"));
-print($payable2->label()." ");
-print($payable2->cost()." ");
-print($payable2->taxRatePerTenThousand());
+//$payable = new Payable(new Ticket("RGBY17032012 - Walles-France", 9000));
+//$payable2 = new Payable(new FreshItem("viande", 300,2500,"2022/10/12"));
+// print($payable2->label()." ");
+// print($payable2->cost()." ");
+// print($payable2->taxRatePerTenThousand());
