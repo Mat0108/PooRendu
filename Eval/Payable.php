@@ -43,6 +43,9 @@ class Payable {
     public function cost(){
         return $this->Item->getPrice();
     }
+    public function getTax(){
+        return $this->Tax;
+    }
     public function taxRatePerTenThousand(){
         return $this->Item->getPrice()*((100+(float)$this->Tax)/100);
     }
