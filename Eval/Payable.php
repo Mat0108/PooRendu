@@ -47,12 +47,12 @@ class Payable {
         return $this->Item->getPrice()*((100+(float)$this->Tax)/100);
     }
     public function toString(){
-        return "label : ".$this->label()."  prix ht : ".$this->cost()." prix tcc : ".$this->taxRatePerTenThousand();
+        return "label : ".$this->label()."  prix ht : ".($this->cost()/100)." € prix tcc : ".($this->taxRatePerTenThousand()/100)." €";
     }
 }
 
 //$payable = new Payable(new Ticket("RGBY17032012 - Walles-France", 9000));
-//$payable2 = new Payable(new FreshItem("viande", 300,2500,"2022/10/12"));
+//$payable2 = new Payable(new FreshItem("viande", 3000,2500,"2022/10/12"));
 // print($payable2->label()." ");
 // print($payable2->cost()." ");
 // print($payable2->taxRatePerTenThousand());
