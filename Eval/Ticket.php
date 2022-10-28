@@ -1,12 +1,8 @@
 <?php
 class Ticket{
-    /**
-     * @var String
-     */
+    /** @var String */
     private $Reference;
-    /**
-     * @var long
-     */
+    /** @var long */
     private $Price;
     public function __construct($reference,$price)
     {
@@ -15,21 +11,11 @@ class Ticket{
     }
     
 
-    /**
-     * @return  String
-     */ 
-    public function getReference()
-    {
-        return $this->Reference;
-    }
+    /** @return  String */ 
+    public function getReference(){return $this->Reference;}
 
-    /**
-     * @return  long
-     */ 
-    public function getPrice()
-    {   
-        return $this->Price;
-    }
+    /** @return  long */ 
+    public function getPrice(){return $this->Price;}
 }
 
 // $ticket = new Ticket("RGBY17032012 - Walles-France", 9000);

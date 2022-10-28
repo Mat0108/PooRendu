@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<config>
+    <host>localhost</host>
+    <dbname>poorendu</dbname>
+    <user>root</user>
+    <password></password>
+    <table>facture</table>
+</config>
